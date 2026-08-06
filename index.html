@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>❤️ Для Ані ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffd6e7,#ffeaf3,#fff8fb);
+}
+
+.card{
+
+width:90%;
+max-width:420px;
+
+background:white;
+padding:35px;
+
+border-radius:30px;
+
+box-shadow:0 20px 45px rgba(255,120,170,.25);
+
+text-align:center;
+
+position:relative;
+
+overflow:hidden;
+
+animation:fade .8s;
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+h1{
+
+color:#ff4f87;
+
+font-size:34px;
+
+margin-bottom:20px;
+
+}
+
+p{
+
+font-size:22px;
+
+color:#555;
+
+line-height:1.6;
+
+margin-bottom:35px;
+
+}
+
+button{
+
+padding:16px 42px;
+
+border:none;
+
+border-radius:40px;
+
+background:#ff5b95;
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:0 10px 25px rgba(255,91,149,.35);
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+background:#ff3d80;
+
+}
+
+.hearts{
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+}
+
+.heart{
+
+position:absolute;
+
+bottom:-30px;
+
+font-size:24px;
+
+animation:fly linear forwards;
+
+}
+
+@keyframes fly{
+
+0%{
+
+transform:translateY(0) scale(.5);
+
+opacity:0;
+
+}
+
+15%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+.small{
+
+font-size:18px;
+
+color:#888;
+
+margin-top:15px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="hearts" id="hearts"></div>
+
+<h1 id="title">🌸 Аню ❤️</h1>
+
+<p id="text">
+У мене є для тебе маленьке повідомлення...
+</p>
+
+<button onclick="nextSlide()" id="btn">
+Натисни 💕
+</button>
+
+<div class="small">
+(тільки обіцяй дочитати до кінця 🥹)
+</div>
+
+</div>
+
+<script>
+
+const slides=[
+{
+title:"🌸 Ти прекрасна",
+text:"Настільки, що іноді я просто дивлюся на тебе і навіть не помічаю, як починаю посміхатися. ❤️"
+},
+
+{
+title:"✨ Ти дуже красива",
+text:"Не тільки зовні. У тебе дуже гарне серце, щира усмішка і погляд, у який хочеться дивитися без кінця."
+},
+
+{
+title:"🧸 Ти дуже розумна",
+text:"Мені завжди цікаво слухати тебе. Ти дивишся на світ по-своєму, і саме це мені в тобі дуже подобається."
+},
+
+{
+title:"🌷 Ти неймовірна дівчинка",
+text:"Добра, турботлива, мила, трішки смішна, іноді вперта 😅, але саме така, яку я люблю всім серцем."
+},
+
+{
+title:"🥹 Знаєш...",
+text:"Я дуже вдячний долі за те, що одного дня вона подарувала мені тебе. Моє життя стало набагато теплішим і щасливішим."
+},
+
+{
+title:"❤️ І найголовніше...",
+text:"Я дуже сильно люблю тебе. Більше, ніж можна описати словами. І хочу, щоб ти завжди пам'ятала про це. ❤️"
+}
+
+];
+
+let current=0;
+
+const title=document.getElementById("title");
+const text=document.getElementById("text");
+const btn=document.getElementById("btn");
+const hearts=document.getElementById("hearts");
+const hearts=document.getElementById("hearts");
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML=["❤️","💕","💖","💗","💘"][Math.floor(Math.random()*5)];
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.fontSize=(18+Math.random()*22)+"px";
+
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+
+hearts.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(createHeart,300);
+
+function nextSlide(){
+
+if(current<slides.length){
+
+title.style.opacity=0;
+text.style.opacity=0;
+
+setTimeout(()=>{
+
+title.innerHTML=slides[current].title;
+
+text.innerHTML=slides[current].text;
+
+title.style.opacity=1;
+text.style.opacity=1;
+
+current++;
+
+if(current===slides.length){
+
+btn.innerHTML="💋 Обійняти Артема";
+
+}
+
+},300);
+
+}else{
+
+title.innerHTML="🥹❤️";
+
+text.innerHTML=`
+Я просто хочу, щоб ти знала...<br><br>
+
+Ти — найкраще, що сталося зі мною. ❤️<br><br>
+
+Дякую тобі за кожну посмішку, кожні обійми,
+кожен проведений разом день.<br><br>
+
+Я дуже-дуже люблю тебе. 💖
+`;
+
+btn.innerHTML="✨ Ще раз";
+
+btn.onclick=restart;
+
+}
+}
+function restart(){
+
+current=0;
+
+title.innerHTML="🌸 Аню ❤️";
+
+text.innerHTML="У мене є для тебе маленьке повідомлення...";
+
+btn.innerHTML="Натисни 💕";
+
+btn.onclick=nextSlide;
+
+}
+
+title.style.transition=".35s";
+text.style.transition=".35s";
+
+for(let i=0;i<20;i++){
+
+setTimeout(createHeart,i*120);
+
+}
+</script>
+
+</body>
+</html>
